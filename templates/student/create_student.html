@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h3>Create Student</h3>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="idName" class="form-label">Name</label>
+      <input type="text" class="form-control" id="idName" name="name">
+    </div>
+    <div class="mb-3">
+        <label for="idRollNo" class="form-label">Roll No</label>
+        <input type="text" class="form-control" id="idRollNo" name="roll_no">
+    </div>
+    <div class="mb-3">
+        <label for="idCourse" class="form-label">Courses</label>
+        <select class="form-select" multiple aria-label="Multiple select example" id="idCourse" name="course">
+            {% for course in courses %}
+                <option value="{{course.id}}">{{course.course_name}}</option>
+            {% endfor %}
+          </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<img src="{% static 'images/img.png' %}" alt="Image">
+{% endblock %}
